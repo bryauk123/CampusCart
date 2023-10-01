@@ -9,9 +9,15 @@ import SwiftUI
 
 @main
 struct CampusCartApp: App {
-    var body: some Scene {
-        WindowGroup {
-            ContentView()
+        @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
+        
+        
+        var body: some Scene {
+            WindowGroup {
+                NavigationView {
+                    ContentView()
+                }
+            }
         }
     }
-}
+
