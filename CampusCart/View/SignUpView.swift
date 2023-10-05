@@ -26,15 +26,29 @@ struct SignUpView: View {
                 VStack(alignment: .center, spacing: 15) {
                     Text("Logo")
                         .frame(maxWidth: .infinity, alignment: .center)
-                    Text("Create Account")
-                        .frame(maxWidth: .infinity, alignment: .leading)
-                        .font(.system(size: 35, weight: .heavy, design: .rounded))
-                        .padding(.bottom, 50)
+//                    Text("Create Account")
+//                        .frame(maxWidth: .infinity, alignment: .leading)
+//                        .font(.system(size: 35, weight: .heavy, design: .rounded))
+//                        .padding(.bottom, 50)
+                    Group {
+                        Text("Hello!")
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                            .font(.system(size:40, weight: .bold, design: .rounded))
+                        
+                        Text("Sign Up To")
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                            .font(.system(size:40, weight: .regular, design: .rounded))
+                        Text("Get Started")
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                            .font(.system(size:40, weight: .regular, design: .rounded))
+                    }
+                    .padding(-1)
+                    .padding(.horizontal, 20)
                     SignUpInputView(text: $firstName,
                                     title: "First Name",
                                     placeholder: "First Name")
                     .autocapitalization(.none)
-                    .padding(14)
+                    .padding(11)
                     
                     .overlay{
                         RoundedRectangle(cornerRadius: 22)
@@ -47,7 +61,7 @@ struct SignUpView: View {
                                     placeholder: "Last Name")
                     .autocapitalization(.none)
 
-                    .padding(14)
+                    .padding(11)
                     .overlay{
                         RoundedRectangle(cornerRadius: 22)
                             .stroke(.gray.opacity(0.6),lineWidth:2)
@@ -57,7 +71,7 @@ struct SignUpView: View {
                                     title: "Email Address",
                                     placeholder: "Email Address")
                     .autocapitalization(.none)
-                    .padding(14)
+                    .padding(11)
                     .overlay{
                         RoundedRectangle(cornerRadius: 22)
                             .stroke(.gray.opacity(0.6),lineWidth:2)
@@ -68,7 +82,7 @@ struct SignUpView: View {
                                     title: "Password",
                                     placeholder: "Password",
                                     isSecureField: true)
-                    .padding(14)
+                    .padding(11)
                     .overlay{
                         RoundedRectangle(cornerRadius: 22)
                             .stroke(.gray.opacity(0.6),lineWidth:2)
@@ -78,7 +92,7 @@ struct SignUpView: View {
                                     title: "Confirm Password",
                                     placeholder: "Confirm Password",
                                     isSecureField: true)
-                    .padding(14)
+                    .padding(11)
                     .overlay{
                         RoundedRectangle(cornerRadius: 22)
                             .stroke(.gray.opacity(0.6),lineWidth:2)

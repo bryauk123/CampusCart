@@ -21,23 +21,35 @@ struct LoginView: View {
                     .opacity(0.12)
                     .ignoresSafeArea()
                 
-
+                
                 VStack(alignment: .center, spacing: 15){
                     //                Image("CampusCart_Title")
                     //                    .resizable()
                     //                    .frame(width:350,height:250,alignment: .leading)
                     //                    .padding(.horizontal)
-                    Text("Logo")
                     HStack {
                         Text("UniCart")
                             .font(.system(size:40, weight: .medium, design: .monospaced))
                             .foregroundStyle(.green.opacity(0.6))
                     }
                     .padding(25)
-                 
-                    .padding(.vertical, 32)
-                    Text("Login")
-                        .font(.system(size:30, weight: .medium, design: .rounded))
+                    
+                    Group {
+                        Text("Hello!")
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                            .font(.system(size:40, weight: .bold, design: .rounded))
+                        
+                        Text("Welcome")
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                            .font(.system(size:40, weight: .regular, design: .rounded))
+                        Text("Back")
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                            .font(.system(size:40, weight: .regular, design: .rounded))
+                    }
+                    .padding(-1)
+                    .padding(.horizontal, 40)
+//                    Text("Login")
+//                        .font(.system(size:30, weight: .medium, design: .rounded))
                     TextField("Email", text: $email,
                               prompt: Text("Email").foregroundColor(.gray.opacity(0.9)))
                     .frame(width: 320)
@@ -48,7 +60,7 @@ struct LoginView: View {
                     }
                     .padding(12)
                     HStack{
-                     
+                        
                         if showPassword {
                             TextField("Password",text: $password,prompt: Text("Password").foregroundColor(.blue))
                         }
@@ -63,7 +75,7 @@ struct LoginView: View {
                                 .foregroundColor(.gray.opacity(0.9)
                                 )
                         }
-                       
+                        
                     }
                     .frame(width: 320)
                     .padding(14)
@@ -84,7 +96,7 @@ struct LoginView: View {
                                 .fontWeight(.bold)
                                 .foregroundStyle(.green.opacity(0.8))
                         }
-                     
+                        
                     }
                     
                     Button{
@@ -106,8 +118,9 @@ struct LoginView: View {
                     //                    LinearGradient(colors: [.red,.blue],startPoint: .topLeading,endPoint: .bottomTrailing)
                     //                )
                 .cornerRadius(20)
+                .shadow(radius: 4 , x: 2, y: 3)
                 .padding()
-                Spacer()
+                    Spacer()
                     
                     
                 }
