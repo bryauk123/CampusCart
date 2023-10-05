@@ -89,7 +89,6 @@
 				68DCED072AC4B574002322A4 /* Model */,
 				2B3AEF202AB9A277006D928B /* CampusCartApp.swift */,
 				68DCED082AC4B596002322A4 /* CampusCartDelegate.swift */,
-				2B3AEF222AB9A277006D928B /* ContentView.swift */,
 				68DCED022AC4AF4D002322A4 /* GoogleService-Info.plist */,
 				2B3AEF242AB9A279006D928B /* Assets.xcassets */,
 				2B3AEF262AB9A279006D928B /* Preview Content */,
@@ -116,6 +115,7 @@
 				2BFA4A832ACD420E006E4D9F /* PostView.swift */,
 				2BFA4A852ACD4219006E4D9F /* DMView.swift */,
 				2BFA4A812ACD410A006E4D9F /* ProfileView.swift */,
+				2B3AEF222AB9A277006D928B /* ContentView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";

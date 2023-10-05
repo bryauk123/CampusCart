@@ -88,22 +88,40 @@ struct SignUpView: View {
                             .stroke(.gray.opacity(0.6),lineWidth:2)
                     }
                     .padding(.horizontal)
-                    SignUpInputView(text: $confirmPassword,
-                                    title: "Confirm Password",
-                                    placeholder: "Confirm Password",
-                                    isSecureField: true)
-                    .padding(11)
-                    .overlay{
-                        RoundedRectangle(cornerRadius: 22)
-                            .stroke(.gray.opacity(0.6),lineWidth:2)
+                    ZStack(alignment: .trailing) {
+                        SignUpInputView(text: $confirmPassword,
+                                        title: "Confirm Password",
+                                        placeholder: "Confirm Password",
+                                        isSecureField: true)
+                        .padding(11)
+                        .overlay{
+                            RoundedRectangle(cornerRadius: 22)
+                                .stroke(.gray.opacity(0.6),lineWidth:2)
+                        }
+                        .padding(.horizontal)
+                        if !password.isEmpty && !confirmPassword.isEmpty {
+                            if password == confirmPassword {
+                                Image(systemName: "checkmark.circle.fill")
+                                    .imageScale(.large)
+                                    .fontWeight(.bold)
+                                    .foregroundColor(Color(.systemGreen))
+                                    .padding(.horizontal, 30)
+                            } else {
+                                Image(systemName: "xmark.circle.fill")
+                                    .imageScale(.large)
+                                    .fontWeight(.bold)
+                                    .foregroundColor(Color(.systemRed))
+                                    .padding(.horizontal,30)
+                            }
+                        }
                     }
-                    .padding(.horizontal)
                     // if password and confirmPassword do not match, throw an error.
                     
                     Button {
                         Task {
                             try await viewModel.createUser(withEmail: email, firstName: firstName, lastName: lastName, password: password, confirmPassword: confirmPassword)
                         }
+                        
                     } label: {
                         Text("Sign up")
                             .font(.title2)
@@ -112,6 +130,8 @@ struct SignUpView: View {
                     }
                     .frame(height:50)
                     .frame(maxWidth: 280)
+                    .disabled(!formIsValid)
+                    .opacity(formIsValid ? 1.0 : 0.5)
                     .background(Color.green.opacity(0.6))
                     .cornerRadius(20)
                     
@@ -136,14 +156,23 @@ struct SignUpView: View {
             }
         }
     }
-    func register() {
-        Auth.auth().createUser(withEmail: email, password: password) { result, error in
-            if error != nil {
-                print(error!.localizedDescription)
-            }
-        }
+}
+
+// MARK: ~ AuthenticationFormProtocol
+
+extension SignUpView: AuthenticationFormProtocol {
+    var formIsValid: Bool {
+        return !email.isEmpty
+        && email.contains("@")
+        && email.contains(".edu")
+        && !password.isEmpty
+        && password.count > 5
+        && confirmPassword == password
+        && !firstName.isEmpty
+        && !lastName.isEmpty
     }
 }
+
 struct SignUp_Previews: PreviewProvider {
     static var previews: some View {
         SignUpView()

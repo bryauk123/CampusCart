@@ -48,8 +48,8 @@ struct LoginView: View {
                     }
                     .padding(-1)
                     .padding(.horizontal, 40)
-//                    Text("Login")
-//                        .font(.system(size:30, weight: .medium, design: .rounded))
+                    //                    Text("Login")
+                    //                        .font(.system(size:30, weight: .medium, design: .rounded))
                     TextField("Email", text: $email,
                               prompt: Text("Email").foregroundColor(.gray.opacity(0.9)))
                     .frame(width: 320)
@@ -118,6 +118,8 @@ struct LoginView: View {
                     //                    LinearGradient(colors: [.red,.blue],startPoint: .topLeading,endPoint: .bottomTrailing)
                     //                )
                 .cornerRadius(20)
+                .disabled(!formIsValid)
+                .opacity(formIsValid ? 1.0 : 0.5)
                 .shadow(radius: 4 , x: 2, y: 3)
                 .padding()
                     Spacer()
@@ -127,19 +129,21 @@ struct LoginView: View {
             }
         }
     }
-    func login() {
-        Auth.auth().signIn(withEmail: email, password: password) { result, error in
-            if error != nil {
-                
+}
+// MARK: ~ AuthenticationFormProtocol
+
+extension LoginView: AuthenticationFormProtocol {
+    var formIsValid: Bool {
+        return !email.isEmpty
+        && email.contains("@")
+        && email.contains(".edu")
+        && !password.isEmpty
+        && password.count > 5
+    }
+}
+                          
+struct LoginScreen_Previews: PreviewProvider {
+            static var previews: some View {
+                LoginView()
             }
         }
-    }
-}
-
-
-
-struct LoginScreen_Previews: PreviewProvider {
-    static var previews: some View {
-        LoginView()
-    }
-}
