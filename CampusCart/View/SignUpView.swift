@@ -115,25 +115,25 @@ struct SignUpView: View {
                             }
                         }
                     }
-                    // if password and confirmPassword do not match, throw an error.
-                    
-                    Button {
-                        Task {
-                            try await viewModel.createUser(withEmail: email, firstName: firstName, lastName: lastName, password: password, confirmPassword: confirmPassword)
+                    // if password and confirmPassword do not match, throw an error
+                    NavigationLink(destination: LoginView()) {
+                        Button {
+                            Task {
+                                try await viewModel.createUser(withEmail: email, firstName: firstName, lastName: lastName, password: password, confirmPassword: confirmPassword)
+                            }
+                        } label: {
+                            Text("Sign up")
+                                .font(.title2)
+                                .bold()
+                                .foregroundColor(.white)
                         }
-                        
-                    } label: {
-                        Text("Sign up")
-                            .font(.title2)
-                            .bold()
-                            .foregroundColor(.white)
                     }
-                    .frame(height:50)
-                    .frame(maxWidth: 280)
-                    .disabled(!formIsValid)
-                    .opacity(formIsValid ? 1.0 : 0.5)
-                    .background(Color.green.opacity(0.6))
-                    .cornerRadius(20)
+                        .frame(height:50)
+                        .frame(maxWidth: 280)
+                        .disabled(!formIsValid)
+                        .opacity(formIsValid ? 1.0 : 0.5)
+                        .background(Color.green.opacity(0.6))
+                        .cornerRadius(20)
                     
                     NavigationLink {
                         LoginView()

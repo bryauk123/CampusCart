@@ -26,6 +26,7 @@
 		687787222ACBD37800356E67 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 687787212ACBD37800356E67 /* FirebaseStorage */; };
 		687787242ACBD8C400356E67 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 687787232ACBD8C400356E67 /* User.swift */; };
 		687787262ACBDB6300356E67 /* Listing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 687787252ACBDB6300356E67 /* Listing.swift */; };
+		68BD0C6C2AD3D39F00C90E6A /* SettingsRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68BD0C6B2AD3D39F00C90E6A /* SettingsRowView.swift */; };
 		68DCED032AC4AF4D002322A4 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 68DCED022AC4AF4D002322A4 /* GoogleService-Info.plist */; };
 		68DCED092AC4B596002322A4 /* CampusCartDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68DCED082AC4B596002322A4 /* CampusCartDelegate.swift */; };
 /* End PBXBuildFile section */
@@ -47,6 +48,7 @@
 		687787182ACBA83800356E67 /* AuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewModel.swift; sourceTree = "<group>"; };
 		687787232ACBD8C400356E67 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		687787252ACBDB6300356E67 /* Listing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Listing.swift; sourceTree = "<group>"; };
+		68BD0C6B2AD3D39F00C90E6A /* SettingsRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsRowView.swift; sourceTree = "<group>"; };
 		68DCED022AC4AF4D002322A4 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		68DCED082AC4B596002322A4 /* CampusCartDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CampusCartDelegate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -116,6 +118,7 @@
 				2BFA4A852ACD4219006E4D9F /* DMView.swift */,
 				2BFA4A812ACD410A006E4D9F /* ProfileView.swift */,
 				2B3AEF222AB9A277006D928B /* ContentView.swift */,
+				68BD0C6B2AD3D39F00C90E6A /* SettingsRowView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -212,6 +215,7 @@
 			files = (
 				68DCED092AC4B596002322A4 /* CampusCartDelegate.swift in Sources */,
 				2BFA4A882ACD429C006E4D9F /* HomeView.swift in Sources */,
+				68BD0C6C2AD3D39F00C90E6A /* SettingsRowView.swift in Sources */,
 				687787172ACBA07E00356E67 /* MainView.swift in Sources */,
 				687787262ACBDB6300356E67 /* Listing.swift in Sources */,
 				2BFA4A862ACD4219006E4D9F /* DMView.swift in Sources */,
