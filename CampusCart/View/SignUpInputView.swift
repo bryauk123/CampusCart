@@ -34,6 +34,6 @@ struct SignUpInputView: View {
 
 struct SignUpInputView_Previews: PreviewProvider {
     static var previews: some View {
-        SignUpInputView(text: .constant(""), title: "Email Adress", placeholder: "name@example.com")
+        SignUpInputView(text: .constant(""), title: "Email Address", placeholder: "name@example.com")
     }
 }
