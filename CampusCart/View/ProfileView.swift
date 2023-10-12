@@ -8,47 +8,46 @@
 import SwiftUI
 
 struct ProfileView: View {
-    @EnvironmentObject var viewModel: AuthViewModel
+    var firstName: String
+    var lastName: String
+    var email: String
+    let navyBlue = Color(red: 0, green: 0, blue: 134, opacity: 1)
     var body: some View {
-        
-        List {
-            Section {
-                HStack {
-                    Text(User.MOCK_USER.initials())
-                        .font(.title)
-                        .fontWeight(.semibold)
-                        .foregroundColor(.white)
-                        .frame(width: 72, height: 72)
-                        .background(Color(.systemGray3))
-                        .clipShape(Circle())
+        NavigationView {
+            VStack {
+                ZStack {
+                    
+                    Rectangle()
+                        .fill(LinearGradient(colors: [.blue.opacity(0.4),.purple
+                            .opacity(0.4)],startPoint: .topLeading,endPoint: .bottomTrailing))
+                        .frame(height: 250, alignment: Alignment.top)
+                    
                     VStack {
-                        HStack {
-                            Text(User.MOCK_USER.firstName)
+                        ZStack {
+                            Circle()
+                                
+                                .stroke(navyBlue, lineWidth: 10)
+                                .frame(width: 150, height: 150)
+                            Text(User.MOCK_USER.initials())
+                                .font(.largeTitle)
                                 .fontWeight(.semibold)
-                                .padding(.top, 4)
-                            Text(User.MOCK_USER.lastName)
-                                .fontWeight(.semibold)
-                                .padding(.top, 4)
-                                .offset(x: -4)
+                                .foregroundColor(.white)
+                                .frame(width: 100, height: 100)
+                                .clipShape(Circle())
                         }
-                        Text(User.MOCK_USER.email)
-                            .font(.footnote)
-                            .foregroundColor(.gray)
+                        
+                            
+                        
+//                        Text("\(firstName) \(lastName)")
+//                            .font(.title)
+//
+//                        Text(email)
+//                            .font(.subheadline)
+//                            .foregroundColor(.gray)
                     }
                 }
-            }
-            
-            Section("General") {
-                HStack{
-                    SettingsRowView(imageName: "gear", title: "Version", tintColor: Color(.systemGray))
-                    
-                    Spacer()
-                    Text("1.0.0")
-                        .font(.subheadline)
-                        .foregroundColor(.gray)
-                }
-            }
-            Section("Account") {
+                SettingsBoxView(text: User.MOCK_USER.fullName(), boxName: "Full Name")
+                SettingsBoxView(text: User.MOCK_USER.email, boxName: "Email Address")
                 Button {
                     print("Sign out..")
                 } label: {
@@ -59,15 +58,15 @@ struct ProfileView: View {
                 } label: {
                     SettingsRowView(imageName: "xmark.circle.fill", title: "Delete Account", tintColor: .red)
                 }
+                Spacer()
             }
         }
-        
+        .navigationTitle("Profile")
     }
 }
 
-
 struct ProfileView_Previews: PreviewProvider {
     static var previews: some View {
-        ProfileView()
+        ProfileView(firstName: "John", lastName: "Doe", email: "john.doe@example.com")
     }
 }

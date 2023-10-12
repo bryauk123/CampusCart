@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct MainView: View {
-    
+    @EnvironmentObject var viewModel: AuthViewModel
     var body: some View {
         //Text("Current Home view")
         TabView{
@@ -22,9 +22,9 @@ struct MainView: View {
                 }
             DMView()
                 .tabItem{
-                    Label("DMs",systemImage:"paperplane.fill")
+                    Label("Message",systemImage:"message")
                 }
-            ProfileView()
+            ProfileView(firstName: User.MOCK_USER.firstName, lastName: User.MOCK_USER.lastName, email: User.MOCK_USER.email)
                 .tabItem{
                     Label("Profile",systemImage:"person.fill")
                 }

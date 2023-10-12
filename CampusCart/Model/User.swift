@@ -13,7 +13,6 @@ struct User: Identifiable, Codable, Hashable {
     var lastName: String
     var email: String
     
-    
     func initials() -> String{
         let firstInitial = firstName.first!
         let secondInitial = lastName.first!
@@ -22,6 +21,10 @@ struct User: Identifiable, Codable, Hashable {
         combinedInitial.append(firstInitial)
         combinedInitial.append(secondInitial)
         return combinedInitial
+    }
+    
+    func fullName() -> String{
+        return firstName + " " + lastName
     }
 }
 

@@ -16,7 +16,6 @@
 		2BFA4A842ACD420E006E4D9F /* PostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BFA4A832ACD420E006E4D9F /* PostView.swift */; };
 		2BFA4A862ACD4219006E4D9F /* DMView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BFA4A852ACD4219006E4D9F /* DMView.swift */; };
 		2BFA4A882ACD429C006E4D9F /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BFA4A872ACD429C006E4D9F /* HomeView.swift */; };
-		68352CFC2AD5079900BBA497 /* ProfileTesterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68352CFB2AD5079900BBA497 /* ProfileTesterView.swift */; };
 		68352CFE2AD534F500BBA497 /* SettingsBoxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68352CFD2AD534F500BBA497 /* SettingsBoxView.swift */; };
 		687787122ACA3A4B00356E67 /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 687787112ACA3A4B00356E67 /* SignUpView.swift */; };
 		687787152ACB475900356E67 /* SignUpInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 687787142ACB475900356E67 /* SignUpInputView.swift */; };
@@ -28,6 +27,7 @@
 		687787222ACBD37800356E67 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 687787212ACBD37800356E67 /* FirebaseStorage */; };
 		687787242ACBD8C400356E67 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 687787232ACBD8C400356E67 /* User.swift */; };
 		687787262ACBDB6300356E67 /* Listing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 687787252ACBDB6300356E67 /* Listing.swift */; };
+		68B3C7F32AD7B0C1005EAFA3 /* HomeViewButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68B3C7F22AD7B0C1005EAFA3 /* HomeViewButtonView.swift */; };
 		68BD0C6C2AD3D39F00C90E6A /* SettingsRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68BD0C6B2AD3D39F00C90E6A /* SettingsRowView.swift */; };
 		68DCED032AC4AF4D002322A4 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 68DCED022AC4AF4D002322A4 /* GoogleService-Info.plist */; };
 		68DCED092AC4B596002322A4 /* CampusCartDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68DCED082AC4B596002322A4 /* CampusCartDelegate.swift */; };
@@ -44,7 +44,6 @@
 		2BFA4A832ACD420E006E4D9F /* PostView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostView.swift; sourceTree = "<group>"; };
 		2BFA4A852ACD4219006E4D9F /* DMView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMView.swift; sourceTree = "<group>"; };
 		2BFA4A872ACD429C006E4D9F /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
-		68352CFB2AD5079900BBA497 /* ProfileTesterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTesterView.swift; sourceTree = "<group>"; };
 		68352CFD2AD534F500BBA497 /* SettingsBoxView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsBoxView.swift; sourceTree = "<group>"; };
 		687787112ACA3A4B00356E67 /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
 		687787142ACB475900356E67 /* SignUpInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpInputView.swift; sourceTree = "<group>"; };
@@ -52,6 +51,7 @@
 		687787182ACBA83800356E67 /* AuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewModel.swift; sourceTree = "<group>"; };
 		687787232ACBD8C400356E67 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		687787252ACBDB6300356E67 /* Listing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Listing.swift; sourceTree = "<group>"; };
+		68B3C7F22AD7B0C1005EAFA3 /* HomeViewButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewButtonView.swift; sourceTree = "<group>"; };
 		68BD0C6B2AD3D39F00C90E6A /* SettingsRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsRowView.swift; sourceTree = "<group>"; };
 		68DCED022AC4AF4D002322A4 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		68DCED082AC4B596002322A4 /* CampusCartDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CampusCartDelegate.swift; sourceTree = "<group>"; };
@@ -123,8 +123,8 @@
 				2BFA4A812ACD410A006E4D9F /* ProfileView.swift */,
 				2B3AEF222AB9A277006D928B /* ContentView.swift */,
 				68BD0C6B2AD3D39F00C90E6A /* SettingsRowView.swift */,
-				68352CFB2AD5079900BBA497 /* ProfileTesterView.swift */,
 				68352CFD2AD534F500BBA497 /* SettingsBoxView.swift */,
+				68B3C7F22AD7B0C1005EAFA3 /* HomeViewButtonView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -225,12 +225,12 @@
 				68BD0C6C2AD3D39F00C90E6A /* SettingsRowView.swift in Sources */,
 				687787172ACBA07E00356E67 /* MainView.swift in Sources */,
 				687787262ACBDB6300356E67 /* Listing.swift in Sources */,
-				68352CFC2AD5079900BBA497 /* ProfileTesterView.swift in Sources */,
 				2BFA4A862ACD4219006E4D9F /* DMView.swift in Sources */,
 				2B3AEF232AB9A277006D928B /* ContentView.swift in Sources */,
 				2B3AEF212AB9A277006D928B /* CampusCartApp.swift in Sources */,
 				687787192ACBA83800356E67 /* AuthViewModel.swift in Sources */,
 				687787242ACBD8C400356E67 /* User.swift in Sources */,
+				68B3C7F32AD7B0C1005EAFA3 /* HomeViewButtonView.swift in Sources */,
 				687787152ACB475900356E67 /* SignUpInputView.swift in Sources */,
 				2BD7C2AE2AC50B830042F09D /* LoginView.swift in Sources */,
 				2BFA4A822ACD410A006E4D9F /* ProfileView.swift in Sources */,

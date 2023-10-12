@@ -8,84 +8,65 @@
 import SwiftUI
 
 struct HomeView: View {
+    @State var isHolding = true
     @State var search: String = ""
     var body: some View {
-        VStack{
-            Text("Home")
-                .font(.title)
-            
-            TextField("Search", text: $search, prompt: Text("Search")
-                .foregroundColor(.gray.opacity(0.9)))
-            .frame(width: 320)
-            .padding(14)
-            .overlay{
-                RoundedRectangle(cornerRadius: 22)
-                    .stroke(.gray.opacity(0.6), lineWidth: 2)
-            }
-            
-            Button(action: {
-                print("Button pressed")
-            }){
-                HStack{
-                    Spacer()
-                    Text("Items").foregroundColor(.black)
-                        .font(.title)
-                    Spacer()
+        ZStack{
+//            Color.gray
+//                .opacity(0.05)
+//                .ignoresSafeArea()
+            VStack{
+                ZStack {
+                    Rectangle()
+                        .fill(.white)
+                        .frame(height: 60)
+                        .cornerRadius(10)
+                        .shadow(radius: 3, x:2, y: 3)
+                        
+                    HStack {
+                        Image(systemName: "magnifyingglass")
+                            .padding()
+                        TextField("Search", text: $search, prompt: Text("Search")
+                            .foregroundColor(.gray.opacity(0.9)))
+                    }
                 }
-                .frame(minWidth: 10,maxWidth: .infinity)
                 .padding()
-                .background(Color.green.opacity(0.6))
-                .cornerRadius(40)
-            }
-            Button(action: {
-                print("Button pressed")
-            }){
-                HStack{
-                    Spacer()
-                    Text("Housing").foregroundColor(.black)
-                        .font(.title)
-                    Spacer()
+                Spacer()
+                
+                HStack {
+                    Button(action: {
+                        isHolding = false
+                        print("Button pressed")
+                    }){
+                        HomeViewButtonView(text: "Items", imageName: "cart", isHolding: isHolding)
+                    }
+                    
+                    Button(action: {
+                        print("Button pressed")
+                    }){
+                        HomeViewButtonView(text: "Housing", imageName: "house", isHolding: isHolding)
+                    }
                 }
-                .frame(minWidth: 10,maxWidth: .infinity)
-                .padding()
-                .background(Color.green.opacity(0.6))
-                .cornerRadius(40)
-            }
-            Button(action: {
-                print("Button pressed")
-            }){
-                HStack{
-                    Spacer()
-                    Text("Jobs").foregroundColor(.black)
-                        .font(.title)
-                    Spacer()
+                HStack {
+                    Button(action: {
+                        print("Button pressed")
+                    }){
+                        HomeViewButtonView(text: "Side Jobs", imageName: "briefcase", isHolding: isHolding)
+                    }
+                   
+                    Button(action: {
+                        print("Button pressed")
+                    }){
+                        HomeViewButtonView(text: "Misc.", imageName: "questionmark", isHolding: isHolding)
+                    }
                 }
-                .frame(minWidth: 10,maxWidth: .infinity)
-                .padding()
-                .background(Color.green.opacity(0.6))
-                .cornerRadius(40)
+                Spacer()
+                
+                
             }
-            Button(action: {
-                print("Button pressed")
-            }){
-                HStack{
-                    Spacer()
-                    Text("Misc.").foregroundColor(.black)
-                        .font(.title)
-                    Spacer()
-                }
-                .frame(minWidth: 10,maxWidth: .infinity)
-                .padding()
-                .background(Color.green.opacity(0.6))
-                .cornerRadius(40)
-            }
-            Spacer()
-            
-            
         }
     }
 }
-
 struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
         HomeView()
