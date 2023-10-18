@@ -10,7 +10,7 @@ import Foundation
 struct Listing: Hashable, Codable, Identifiable {
     var id: String
     var title: String
-    var date: Date
-    var body: String
+    var description: String
+    var price: Int
     
 }
