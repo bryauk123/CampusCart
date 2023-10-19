@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2B3891212AE05E5100E474F2 /* ItemsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B3891202AE05E5100E474F2 /* ItemsView.swift */; };
+		2B3891242AE062C900E474F2 /* HousingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B3891232AE062C900E474F2 /* HousingView.swift */; };
+		2B3891262AE062D900E474F2 /* SidejobsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B3891252AE062D900E474F2 /* SidejobsView.swift */; };
+		2B3891282AE062E900E474F2 /* MiscView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B3891272AE062E900E474F2 /* MiscView.swift */; };
 		2B3AEF212AB9A277006D928B /* CampusCartApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B3AEF202AB9A277006D928B /* CampusCartApp.swift */; };
 		2B3AEF232AB9A277006D928B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B3AEF222AB9A277006D928B /* ContentView.swift */; };
 		2B3AEF252AB9A279006D928B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2B3AEF242AB9A279006D928B /* Assets.xcassets */; };
@@ -34,6 +38,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2B3891202AE05E5100E474F2 /* ItemsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemsView.swift; sourceTree = "<group>"; };
+		2B3891232AE062C900E474F2 /* HousingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HousingView.swift; sourceTree = "<group>"; };
+		2B3891252AE062D900E474F2 /* SidejobsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidejobsView.swift; sourceTree = "<group>"; };
+		2B3891272AE062E900E474F2 /* MiscView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiscView.swift; sourceTree = "<group>"; };
 		2B3AEF1D2AB9A277006D928B /* CampusCart.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CampusCart.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2B3AEF202AB9A277006D928B /* CampusCartApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CampusCartApp.swift; sourceTree = "<group>"; };
 		2B3AEF222AB9A277006D928B /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -72,6 +80,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2B3891222AE0626800E474F2 /* ListingViews */ = {
+			isa = PBXGroup;
+			children = (
+				2B3891202AE05E5100E474F2 /* ItemsView.swift */,
+				2B3891232AE062C900E474F2 /* HousingView.swift */,
+				2B3891252AE062D900E474F2 /* SidejobsView.swift */,
+				2B3891272AE062E900E474F2 /* MiscView.swift */,
+			);
+			path = ListingViews;
+			sourceTree = "<group>";
+		};
 		2B3AEF142AB9A277006D928B = {
 			isa = PBXGroup;
 			children = (
@@ -113,6 +132,7 @@
 		687787102ACA21E000356E67 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				2B3891222AE0626800E474F2 /* ListingViews */,
 				2BD7C2AD2AC50B830042F09D /* LoginView.swift */,
 				687787112ACA3A4B00356E67 /* SignUpView.swift */,
 				687787142ACB475900356E67 /* SignUpInputView.swift */,
@@ -220,6 +240,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				68DCED092AC4B596002322A4 /* CampusCartDelegate.swift in Sources */,
+				2B3891212AE05E5100E474F2 /* ItemsView.swift in Sources */,
 				68352CFE2AD534F500BBA497 /* SettingsBoxView.swift in Sources */,
 				2BFA4A882ACD429C006E4D9F /* HomeView.swift in Sources */,
 				68BD0C6C2AD3D39F00C90E6A /* SettingsRowView.swift in Sources */,
@@ -228,6 +249,8 @@
 				2BFA4A862ACD4219006E4D9F /* DMView.swift in Sources */,
 				2B3AEF232AB9A277006D928B /* ContentView.swift in Sources */,
 				2B3AEF212AB9A277006D928B /* CampusCartApp.swift in Sources */,
+				2B3891282AE062E900E474F2 /* MiscView.swift in Sources */,
+				2B3891242AE062C900E474F2 /* HousingView.swift in Sources */,
 				687787192ACBA83800356E67 /* AuthViewModel.swift in Sources */,
 				687787242ACBD8C400356E67 /* User.swift in Sources */,
 				68B3C7F32AD7B0C1005EAFA3 /* HomeViewButtonView.swift in Sources */,
@@ -236,6 +259,7 @@
 				2BFA4A822ACD410A006E4D9F /* ProfileView.swift in Sources */,
 				2BFA4A842ACD420E006E4D9F /* PostView.swift in Sources */,
 				687787122ACA3A4B00356E67 /* SignUpView.swift in Sources */,
+				2B3891262AE062D900E474F2 /* SidejobsView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

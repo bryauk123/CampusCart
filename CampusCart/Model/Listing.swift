@@ -7,6 +7,7 @@
 
 import Foundation
 
+
 struct Listing: Hashable, Codable, Identifiable {
     var id: String
     var title: String

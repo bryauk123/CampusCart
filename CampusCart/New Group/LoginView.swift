@@ -104,7 +104,7 @@ struct LoginView: View {
                             try await viewModel.login(withEmail: email, password: password)
                         }
                     }
-                    
+                
                 label:{
                     Text("Login")
                         .font(.title2)
@@ -123,7 +123,10 @@ struct LoginView: View {
                 .shadow(radius: 4 , x: 2, y: 3)
                 .padding()
                     Spacer()
-                    
+    
+                NavigationLink(destination: MainView()){
+                    Text("Bypass Login")
+                }
                     
                 }
             }

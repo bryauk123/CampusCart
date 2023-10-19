@@ -32,8 +32,13 @@ final class PhotoPickerViewModel: ObservableObject{
     }
         
 }
+
+
+
 struct PostView: View {
+    @Binding var listings: [Listing]
     let db = Firestore.firestore()
+    
     @State var itemName: String = ""
     @State var description: String = ""
     @State var price: Int = 0
@@ -77,23 +82,45 @@ struct PostView: View {
                     RoundedRectangle(cornerRadius: 22)
                         .stroke(.gray.opacity(0.6), lineWidth: 2)
                 }
-            let newData = Listing(id:"1235",title: itemName,description: description,price: price)
-            let collectionReference = db.collection("listings")
-            Button("add data"){
+            
+            Button("Submit"){
+                let randomId = randomString(length: 10)
+                let newData = Listing(id: randomId,title: itemName,description: description,price: price)
+                let collectionReference = db.collection("listings")
                 collectionReference.addDocument(data:[
                     "id": newData.id,
                     "title": newData.title,
                     "description": newData.description,
                     "price": newData.price])
+                
+                listings.insert(Listing(
+                    id: newData.id,
+                    title: newData.title,
+                    description: newData.description,
+                    price: newData.price), at: 0)
+                //ItemsView(listModel: listModel)
             }
             
             Spacer()
         }
     }
+    func randomString(length: Int) -> String {
+        let characters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
+        var randomString = ""
+        
+        for _ in 0..<length {
+            let randomIndex = Int.random(in: 0..<characters.count)
+            let character = characters[characters.index(characters.startIndex, offsetBy: randomIndex)]
+            randomString.append(character)
+        }
+        
+        return randomString
+    }
 }
 
 struct PostView_Previews: PreviewProvider {
+    @State static var listings: [Listing] = []
     static var previews: some View {
-        PostView()
+        PostView(listings: $listings)
     }
 }

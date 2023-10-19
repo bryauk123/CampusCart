@@ -9,6 +9,7 @@ import SwiftUI
 
 struct MainView: View {
     @EnvironmentObject var viewModel: AuthViewModel
+    //@Binding var listModel: ListViewModel
     var body: some View {
         //Text("Current Home view")
         TabView{
@@ -16,10 +17,11 @@ struct MainView: View {
                 .tabItem{
                     Label("Home",systemImage: "house.fill")
                 }
-            PostView()
+            //let listModel = ListViewModel()
+            /*PostView()
                 .tabItem{
                     Label("Post", systemImage: "square.and.pencil")
-                }
+                }*/
             DMView()
                 .tabItem{
                     Label("Message",systemImage:"message")
@@ -34,6 +36,7 @@ struct MainView: View {
 
 struct MainView_Previews: PreviewProvider {
     static var previews: some View {
+        //let listModel = ListViewModel()
         MainView()
     }
 }

@@ -32,34 +32,51 @@ struct HomeView: View {
                 }
                 .padding()
                 Spacer()
-                
-                HStack {
-                    Button(action: {
-                        isHolding = false
-                        print("Button pressed")
-                    }){
-                        HomeViewButtonView(text: "Items", imageName: "cart", isHolding: isHolding)
+                NavigationView{
+                    VStack{
+                        HStack {
+                            Button(action: {
+                                isHolding = false
+                                print("Button pressed")
+                                
+                            }){
+                                //let listModel = ListViewModel()
+                                /*
+                                NavigationLink(destination: ItemsView(listings: $listings)){
+                                    HomeViewButtonView(text: "Items", imageName: "cart", isHolding: isHolding)
+                                }*/
+                            }
+                            
+                            Button(action: {
+                                print("Button pressed")
+                            }){
+                                NavigationLink(destination:HousingView()){
+                                    HomeViewButtonView(text: "Housing", imageName: "house", isHolding: isHolding)
+                                }
+                                
+                            }
+                            
+                        }
+                        HStack {
+                            Button(action: {
+                                print("Button pressed")
+                            }){
+                                NavigationLink(destination:SidejobsView()){
+                                    HomeViewButtonView(text: "Side Jobs", imageName: "briefcase", isHolding: isHolding)
+                                }
+                            }
+                            
+                            Button(action: {
+                                print("Button pressed")
+                            }){
+                                NavigationLink(destination:MiscView()){
+                                    HomeViewButtonView(text: "Misc.", imageName: "questionmark", isHolding: isHolding)
+                                }
+                            }
+                        }
                     }
+                }
                     
-                    Button(action: {
-                        print("Button pressed")
-                    }){
-                        HomeViewButtonView(text: "Housing", imageName: "house", isHolding: isHolding)
-                    }
-                }
-                HStack {
-                    Button(action: {
-                        print("Button pressed")
-                    }){
-                        HomeViewButtonView(text: "Side Jobs", imageName: "briefcase", isHolding: isHolding)
-                    }
-                   
-                    Button(action: {
-                        print("Button pressed")
-                    }){
-                        HomeViewButtonView(text: "Misc.", imageName: "questionmark", isHolding: isHolding)
-                    }
-                }
                 Spacer()
                 
                 
