@@ -8,6 +8,7 @@
 import Foundation
 import Firebase
 import FirebaseFirestoreSwift
+import SwiftUI
 
 protocol AuthenticationFormProtocol {
     var formIsValid: Bool { get }
@@ -18,7 +19,8 @@ protocol AuthenticationFormProtocol {
 class AuthViewModel: ObservableObject {
     @Published var userSession: FirebaseAuth.User?
     @Published var currentUser: User?
-
+    @State private var alertMessage = ""
+    @State private var showAlert = false
     init() {
         self.userSession = Auth.auth().currentUser
         
@@ -46,7 +48,19 @@ class AuthViewModel: ObservableObject {
             let user = User(id: result.user.uid, firstName: firstName, lastName: lastName, email: email)
             let encodedUser = try Firestore.Encoder().encode(user)
             try await Firestore.firestore().collection("users").document(user.id).setData(encodedUser)
+            do {
+                try await Auth.auth().currentUser?.sendEmailVerification()
+                print("Email verification sent")
+            } catch {
+                print("Error sending email verification: \(error.localizedDescription)")
+            }
+
+            
+            // Check to see if user has verified their email, if so, fetch user else print error
             await fetchUser()
+                
+           
+            
         } catch {
             print("DEBUG: Failed to create user with error  \(error.localizedDescription)")
         }
@@ -63,7 +77,15 @@ class AuthViewModel: ObservableObject {
     }
     
     func deleteAccount() {
+        let user = Auth.auth().currentUser
         
+        user?.delete { error in
+            if let error = error {
+                print("Error deleting user: \(error.localizedDescription)")
+            } else {
+                print("User has been deleted")
+            }
+        }
     }
     
     func fetchUser() async {
@@ -73,5 +95,9 @@ class AuthViewModel: ObservableObject {
         self.currentUser = try? snapshot.data(as: User.self)
 
         print("DEBUG: Current user is \(self.currentUser)")
+    }
+    
+    func passwordReset() {
+        
     }
 }

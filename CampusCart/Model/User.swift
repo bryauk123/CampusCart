@@ -26,6 +26,8 @@ struct User: Identifiable, Codable, Hashable {
     func fullName() -> String{
         return firstName + " " + lastName
     }
+    
+    
 }
 
 extension User {

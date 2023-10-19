@@ -22,6 +22,7 @@ struct ProfileView: View {
                             .opacity(0.4)],startPoint: .topLeading,endPoint: .bottomTrailing))
                         .frame(height: 250, alignment: Alignment.top)
                     
+                    
                     VStack {
                         ZStack {
                             Circle()
@@ -48,17 +49,33 @@ struct ProfileView: View {
                 }
                 SettingsBoxView(text: User.MOCK_USER.fullName(), boxName: "Full Name")
                 SettingsBoxView(text: User.MOCK_USER.email, boxName: "Email Address")
-                Button {
-                    print("Sign out..")
-                } label: {
-                    SettingsRowView(imageName: "arrow.left.circle.fill", title: "Sign Out", tintColor: .red)
-                }
-                Button {
-                    print("Delete Account..")
-                } label: {
-                    SettingsRowView(imageName: "xmark.circle.fill", title: "Delete Account", tintColor: .red)
-                }
                 Spacer()
+                
+                HStack {
+                    Button {
+                        print("Sign out..")
+                    } label: {
+                        SettingsRowView(imageName: "arrow.left.circle.fill", title: "Sign Out", tintColor: .red)
+                            .padding()
+                    }
+                    .overlay{
+                        RoundedRectangle(cornerRadius: 22)
+                            .stroke(.gray.opacity(0.6), lineWidth: 2)
+                    }
+              
+                    Button {
+                        print("Delete Account..")
+                    } label: {
+                        SettingsRowView(imageName: "person.crop.circle.fill.badge.xmark", title: "Delete Account", tintColor: .red)
+                            .padding()
+                    }
+                    .overlay{
+                        RoundedRectangle(cornerRadius: 22)
+                            .stroke(.gray.opacity(0.6), lineWidth: 2)
+                    }
+                    
+                }
+                
             }
         }
         .navigationTitle("Profile")
