@@ -8,10 +8,11 @@
 import Foundation
 
 
-struct Listing: Hashable, Codable, Identifiable {
+struct ImageListing: Hashable, Codable, Identifiable {
     var id: String
     var title: String
     var description: String
     var price: Int
+    var profileImageUrl: String?
     
 }

@@ -10,6 +10,7 @@ import SwiftUI
 struct HomeView: View {
     @State var isHolding = true
     @State var search: String = ""
+    @State var listings: [Listing]
     var body: some View {
         ZStack{
 //            Color.gray
@@ -41,10 +42,10 @@ struct HomeView: View {
                                 
                             }){
                                 //let listModel = ListViewModel()
-                                /*
-                                NavigationLink(destination: ItemsView(listings: $listings)){
+                                
+                                NavigationLink(destination: ItemsView(listings: listings)){
                                     HomeViewButtonView(text: "Items", imageName: "cart", isHolding: isHolding)
-                                }*/
+                                }
                             }
                             
                             Button(action: {
@@ -86,6 +87,10 @@ struct HomeView: View {
 }
 struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
-        HomeView()
+        HomeView(listings:[Listing(
+            id: "2",
+            title: "Default",
+            description: "Def Description",
+            price: 2)])
     }
 }

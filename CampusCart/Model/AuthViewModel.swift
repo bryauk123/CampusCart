@@ -54,7 +54,7 @@ class AuthViewModel: ObservableObject {
             } catch {
                 print("Error sending email verification: \(error.localizedDescription)")
             }
-
+             
             
             // Check to see if user has verified their email, if so, fetch user else print error
             await fetchUser()
@@ -86,6 +86,8 @@ class AuthViewModel: ObservableObject {
                 print("User has been deleted")
             }
         }
+        // self.userSession = nil
+        // self.currentUser = nil
     }
     
     func fetchUser() async {
@@ -97,7 +99,15 @@ class AuthViewModel: ObservableObject {
         print("DEBUG: Current user is \(self.currentUser)")
     }
     
-    func passwordReset() {
-        
+    func passwordReset(withEmail email: String) {
+        if email != "" {
+            Auth.auth().sendPasswordReset(withEmail: email) { err in
+                if let err = err {
+                    print("Error resetting password: \(err.localizedDescription)")
+                } else {
+                    print("Password has been reset")
+                }
+            }
+        }
     }
 }

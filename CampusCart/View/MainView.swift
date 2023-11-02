@@ -13,9 +13,18 @@ struct MainView: View {
     var body: some View {
         //Text("Current Home view")
         TabView{
-            HomeView()
+            HomeView(listings:[Listing(
+                id: "2",
+                title: "Default",
+                description: "Def Description",
+                price: 2)])
+
+
+            Text("Home")
+
                 .tabItem{
-                    Label("Home",systemImage: "house.fill")
+//                    Label("Home",systemImage: "house.fill")
+                    Image(systemName: "house")
                 }
             //let listModel = ListViewModel()
             /*PostView()

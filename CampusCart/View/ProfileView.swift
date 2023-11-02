@@ -25,16 +25,14 @@ struct ProfileView: View {
                     
                     VStack {
                         ZStack {
-                            Circle()
-                                
-                                .stroke(navyBlue, lineWidth: 10)
-                                .frame(width: 150, height: 150)
+
                             Text(User.MOCK_USER.initials())
                                 .font(.largeTitle)
                                 .fontWeight(.semibold)
                                 .foregroundColor(.white)
                                 .frame(width: 100, height: 100)
                                 .clipShape(Circle())
+                           
                         }
                         
                             

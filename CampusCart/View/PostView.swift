@@ -8,6 +8,7 @@
 import SwiftUI
 import PhotosUI
 import Firebase
+import FirebaseStorage
 
 @MainActor
 final class PhotoPickerViewModel: ObservableObject{
@@ -18,31 +19,80 @@ final class PhotoPickerViewModel: ObservableObject{
             setImage(from: imageSelection)
         }
     }
+    
+    @Published private(set) var selectedImages: [UIImage] = []
+    @Published var imageSelections: [PhotosPickerItem] = [] {
+        didSet{
+            setImages(from: imageSelections)
+        }
+    }
+    
     private func setImage(from selection: PhotosPickerItem?){
         guard let selection else {return}
         
         Task{
-            if let data = try? await selection.loadTransferable(type: Data.self){
-                if let uiImage = UIImage(data: data){
-                    selectedImage = uiImage
-                    return
+            //            if let data = try? await selection.loadTransferable(type: Data.self){
+            //                if let uiImage = UIImage(data: data){
+            //                    selectedImage = uiImage
+            //                    return
+            //                }
+            //            }
+            do {
+                let data = try? await selection.loadTransferable(type: Data.self)
+                
+                guard let data, let uiImage = UIImage(data: data) else {
+                    throw URLError(.badServerResponse)
                 }
+                
+                selectedImage = uiImage
+            } catch {
+                print(error)
             }
         }
+
     }
+    func saveImage(item: PhotosPickerItem){
+        Task{
+            
+            guard let data = try await item.loadTransferable(type: Data.self) else {return}
+            let (path,name) = try await StorageManager.shared.uploadImage(data:data)
+            print("Success!")
+            print(path)
+            print(name)
+        }
+    }
+
         
+    }
+    
+    private func setImages(from selections: [PhotosPickerItem]) {
+        Task {
+            var images: [UIImage] = []
+            for selection in selections {
+                if let data = try? await selection.loadTransferable(type: Data.self){
+                    if let uiImage = UIImage(data: data){
+                        images.append(uiImage)
+                        
+                    }
+                }
+            }
+            selectedImages = images
+        }
+        
+    }
+    
 }
 
 
 
 struct PostView: View {
-    @Binding var listings: [Listing]
+    @Binding var listings: [ImageListing]
     let db = Firestore.firestore()
-    
+//    @EnvironmentObject var viewModel: PhotoPickerViewModel
     @State var itemName: String = ""
     @State var description: String = ""
     @State var price: Int = 0
-    @State var imageUploaded: Bool = true
+    @State private var imageUploaded: PhotosPickerItem? = nil
     
     @StateObject private var viewModel = PhotoPickerViewModel()
     
@@ -55,18 +105,43 @@ struct PostView: View {
                     RoundedRectangle(cornerRadius: 22)
                         .stroke(.gray.opacity(0.6), lineWidth: 2)
                 }
-            if let image = viewModel.selectedImage{
+            /*
+            if let image = $imageUploaded{
                 Image(uiImage: image)
                     .resizable()
                     .scaledToFill()
                     .frame(width:200,height:200)
                     .cornerRadius(10)
-            }
-                PhotosPicker(selection: $viewModel.imageSelection,matching:.images){
-                    Text("Upload Image")
-                        .foregroundColor(.red)
-                }
+            }*/
             
+            
+
+            }
+//            PhotosPicker(selection: $viewModel.imageSelection,matching:.images){
+//                Text("Upload Image")
+//                    .foregroundColor(.red)
+//            }
+            if !viewModel.selectedImages.isEmpty {
+                ScrollView(.horizontal, showsIndicators: false) {
+                    HStack{
+                        ForEach(viewModel.selectedImages, id: \.self) { image in
+                            Image(uiImage: image)
+                                .resizable()
+                                .scaledToFill()
+                                .frame(width:200,height:200)
+                                .cornerRadius(10)
+                        }
+                    }
+                }
+            }
+            PhotosPicker(selection: $viewModel.imageSelections,matching:.images){
+                Text("Upload Images")
+                    .foregroundColor(.red)
+            }
+            Text("Required")
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .font(.system(size:30, weight: .bold, design: .rounded))
+
             Text("Set Price")
             TextField("$$$",value: $price, format:.number).foregroundColor(.gray.opacity(0.9))
                 .frame(width: 100)
@@ -85,7 +160,7 @@ struct PostView: View {
             
             Button("Submit"){
                 let randomId = randomString(length: 10)
-                let newData = Listing(id: randomId,title: itemName,description: description,price: price)
+                let newData = ImageListing(id: randomId,title: itemName,description: description,price: price)
                 let collectionReference = db.collection("listings")
                 collectionReference.addDocument(data:[
                     "id": newData.id,
@@ -93,7 +168,7 @@ struct PostView: View {
                     "description": newData.description,
                     "price": newData.price])
                 
-                listings.insert(Listing(
+                listings.insert(ImageListing(
                     id: newData.id,
                     title: newData.title,
                     description: newData.description,
@@ -101,8 +176,8 @@ struct PostView: View {
                 //ItemsView(listModel: listModel)
             }
             
-            Spacer()
         }
+        
     }
     func randomString(length: Int) -> String {
         let characters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
@@ -119,7 +194,7 @@ struct PostView: View {
 }
 
 struct PostView_Previews: PreviewProvider {
-    @State static var listings: [Listing] = []
+    @State static var listings: [ImageListing] = []
     static var previews: some View {
         PostView(listings: $listings)
     }

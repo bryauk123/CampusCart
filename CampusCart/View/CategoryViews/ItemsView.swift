@@ -20,8 +20,7 @@ class ListViewModel: ObservableObject{
 
 
 struct ItemsView: View {
-    @State var listings: [Listing]
-    
+    @State var listings: [ImageListing]
     var body: some View {
         NavigationView{
             VStack{
@@ -41,11 +40,15 @@ struct ItemsView: View {
     }
 }
 
+func insertImage() async throws {
+  
+}
+
 struct ItemsView_Previews: PreviewProvider {
     
     static var previews: some View {
         //let listModel = ListViewModel()
-        ItemsView(listings:[Listing(
+        ItemsView(listings:[ImageListing(
             id: "2",
             title: "Default",
             description: "Def Description",
